@@ -4,9 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.edu.salonapi.service.dto.ProvidedServiceResponseDto;
 import pl.edu.salonapi.service.mapper.ProvidedServiceMapper;
+import pl.edu.salonapi.service.model.ProvidedService;
 import pl.edu.salonapi.service.repository.ProvidedServiceRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -20,5 +22,10 @@ class ProvidedServiceServiceImpl implements ProvidedServiceService {
                 .stream()
                 .map(mapper::toDto)
                 .toList();
+    }
+
+    @Override
+    public List<ProvidedService> findAllByIds(Set<Long> ids) {
+        return repository.findAllById(ids);
     }
 }
