@@ -30,5 +30,16 @@ services:
       postgres:
         condition: service_healthy
 
+  frontend:
+    container_name: salon-front
+    build: ./salon-front
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./salon-front:/app
+      - /app/node_modules
+    depends_on:
+      - app
+
 volumes:
   pgdata:
