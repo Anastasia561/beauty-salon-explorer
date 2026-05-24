@@ -1,12 +1,9 @@
 package pl.edu.salonapi.business.dto;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 
@@ -34,16 +31,9 @@ public record BusinessUpdateRequestDto(
         @URL(message = "Invalid website URL format")
         String websiteUrl,
 
-        @Min(value = 0, message = "Average rating cannot be less than 0.0")
-        @Max(value = 5, message = "Average rating cannot exceed 5.0")
-        double avgRating,
-
         @NotBlank(message = "Price range indicator is required")
         @Pattern(regexp = "^\\$+$", message = "Price range must match currency symbols (e.g., $, $$, $$$)")
         String priceRange,
-
-        @PositiveOrZero(message = "Total reviews count cannot be negative")
-        int totalReviews,
 
         @NotNull(message = "Services collection cannot be null")
         Set<@Positive(message = "Service IDs must be valid positive numbers") Long> serviceIds

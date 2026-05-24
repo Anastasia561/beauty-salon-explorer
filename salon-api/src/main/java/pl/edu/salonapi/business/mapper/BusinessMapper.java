@@ -24,7 +24,5 @@ public interface BusinessMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "district", ignore = true)
     @Mapping(target = "services", ignore = true)
-    @Mapping(source = "avgRating", target = "reviewSummary.avgRating")
-    @Mapping(source = "totalReviews", target = "reviewSummary.totalReviews")
     void updateBusinessFromDto(BusinessUpdateRequestDto dto, @MappingTarget Business business);
 }
