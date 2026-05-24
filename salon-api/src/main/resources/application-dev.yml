@@ -7,3 +7,7 @@ spring:
 cors:
   allowed-origins:
     - http://localhost:5173
+
+openapi:
+  resource-server-url: ${DEV_SERVER_URL}
+  server-description: Development server

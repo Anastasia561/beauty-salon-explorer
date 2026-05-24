@@ -1,5 +1,7 @@
 package pl.edu.salonapi.business.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,10 +21,12 @@ import pl.edu.salonapi.wrapper.ResponseWrapper;
 
 @RestController
 @RequestMapping("/businesses")
+@Tag(name = "Salons", description = "Endpoints for managing beauty salons")
 @RequiredArgsConstructor
 public class BusinessController {
     private final BusinessService businessService;
 
+    @Operation(summary = "Endpoint for listing available salons with optional district filter and provided service search")
     @GetMapping
     public ResponseWrapper<Page<BusinessResponseDto>> findAll(Pageable pageable,
                                                               @RequestParam(required = false) String district,
@@ -30,11 +34,13 @@ public class BusinessController {
         return ResponseWrapper.ok(businessService.findAllPageable(district, service, pageable));
     }
 
+    @Operation(summary = "Endpoint for finding detailed salon info by id")
     @GetMapping("/{id}")
     public ResponseWrapper<BusinessInfoResponseDto> findById(@PathVariable Long id) {
         return ResponseWrapper.ok(businessService.getById(id));
     }
 
+    @Operation(summary = "Endpoint for updating salon info")
     @PutMapping("/{id}")
     public ResponseWrapper<Long> update(@PathVariable Long id,
                                         @RequestBody @Valid BusinessUpdateRequestDto dto) {

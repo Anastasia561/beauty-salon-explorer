@@ -1,4 +1,4 @@
-package pl.edu.salonapi.config;
+package pl.edu.salonapi.config.props;
 
 import lombok.Getter;
 import lombok.Setter;
