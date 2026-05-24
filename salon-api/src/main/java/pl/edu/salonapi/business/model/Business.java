@@ -14,9 +14,11 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.UpdateTimestamp;
 import pl.edu.salonapi.district.model.District;
 import pl.edu.salonapi.service.model.ProvidedService;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -46,6 +48,10 @@ public class Business {
 
     @Column(length = 5, nullable = false)
     private String priceRange;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 
     @ManyToMany
     @JoinTable(
