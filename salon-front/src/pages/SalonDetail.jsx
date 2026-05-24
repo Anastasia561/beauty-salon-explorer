@@ -42,7 +42,7 @@ const SalonDetail = () => {
 
     return (
         <div className="container my-5" style={{maxWidth: '900px'}}>
-            <button onClick={() => navigate(-1)}
+            <button onClick={() => navigate('/')}
                     className="btn btn-link text-decoration-none text-muted p-0 mb-4 d-inline-flex align-items-center gap-2">
                 <i className="bi bi-arrow-left"></i> Back to Exploration
             </button>

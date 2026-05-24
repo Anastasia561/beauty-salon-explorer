@@ -97,7 +97,8 @@ const SalonList = () => {
                                         <i className="bi bi-info-circle text-success"></i> Info
                                     </button>
                                     <button
-                                        className="btn btn-primary btn-sm d-flex align-items-center gap-1 px-3 shadow-sm">
+                                        className="btn btn-primary btn-sm d-flex align-items-center gap-1 px-3 shadow-sm"
+                                        onClick={() => navigate(`/salons/${salon.id}/update`)}>
                                         <i className="bi bi-pencil-square"></i> Update
                                     </button>
                                 </div>
